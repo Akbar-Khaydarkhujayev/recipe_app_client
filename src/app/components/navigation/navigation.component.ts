@@ -13,7 +13,13 @@ export class NavigationComponent {
   CreateClicked() {
     this.router.navigateByUrl('create');
   }
-  onHomeIconClicked() {
-    this.router.navigateByUrl('home');
+  onHomeClicked() {
+    this.router.navigateByUrl('');
+  }
+  onRecipesClicked() {
+    this.router.navigateByUrl('');
+  }
+  onProductsClicked() {
+    this.router.navigateByUrl('product');
   }
 }

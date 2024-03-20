@@ -1,13 +1,15 @@
+import { IProduct } from './IProduct';
+
 export interface IRecipe {
   id: number;
   name: string;
   details: string;
   productID: number;
-  product: IAddRecipe;
+  product: IProduct;
 }
 
 export interface IAddRecipe {
-  title: string;
-  description: string;
+  name: string;
+  details: string;
   productID: number;
 }

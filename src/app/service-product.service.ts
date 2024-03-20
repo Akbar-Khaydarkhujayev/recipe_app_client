@@ -1,43 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { IProduct, IAddProduct } from './IProduct';
-import { IRecipe } from './IRecipe';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ServiceTodoService {
+export class ServiceProductService {
   httpClient = inject(HttpClient);
   constructor() {}
 
   getAllProducts() {
     return this.httpClient.get<IProduct[]>(
-      'http://localhost:5169/api/ToDo/GetAll'
+      'https://localhost:7147/api/Products'
     );
   }
 
   getProductByID(id: number) {
     return this.httpClient.get<IProduct>(
-      'http://localhost:5169/api/ToDo/GetByID/' + id
+      'https://localhost:7147/api/Products/' + id
     );
   }
-  editProduct(item: IAddProduct) {
-    return this.httpClient.put('http://localhost:5169/api/ToDo/Update', item);
+  editProduct(item: IProduct) {
+    return this.httpClient.put('https://localhost:7147/api/Products', item);
   }
   deleteProduct(id: number) {
-    return this.httpClient.delete(
-      'http://localhost:5169/api/ToDo/Delete/' + id
-    );
+    return this.httpClient.delete('https://localhost:7147/api/Products/' + id);
   }
   createProduct(item: IAddProduct) {
     return this.httpClient.post<IAddProduct>(
-      'http://localhost:5169/api/ToDo/Create',
+      'https://localhost:7147/api/Products',
       item
-    );
-  }
-  getAllRecipes() {
-    return this.httpClient.get<IRecipe[]>(
-      'http://localhost:5169/api/ToDo/GetAll'
     );
   }
 }

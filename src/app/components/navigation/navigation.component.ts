@@ -10,12 +10,6 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent {
   router = inject(Router);
-  CreateClicked() {
-    this.router.navigateByUrl('create');
-  }
-  onHomeClicked() {
-    this.router.navigateByUrl('');
-  }
   onRecipesClicked() {
     this.router.navigateByUrl('');
   }

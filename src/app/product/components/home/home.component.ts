@@ -1,17 +1,18 @@
 import { Component, inject } from '@angular/core';
-import { ServiceTodoService } from '../../../service-product.service';
+import { ServiceProductService } from '../../../service-product.service';
 import { IProduct } from '../../../IProduct';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  productService = inject(ServiceTodoService);
+  productService = inject(ServiceProductService);
   router = inject(Router);
   items: IProduct[] = [];
   ngOnInit() {
@@ -20,21 +21,16 @@ export class HomeComponent {
     });
   }
 
-  displayedColumns: string[] = [
-    'ID',
-    'Title',
-    'Description',
-    'Category Name',
-    'Actions',
-  ];
-
+  CreateClicked() {
+    this.router.navigateByUrl('product/create');
+  }
   EditClicked(itemID: number) {
-    this.router.navigateByUrl('/edit/' + itemID);
+    this.router.navigateByUrl('product/edit/' + itemID);
   }
   DetailsClicked(itemID: number) {
-    this.router.navigateByUrl('/details/' + itemID);
+    this.router.navigateByUrl('product/details/' + itemID);
   }
   DeleteClicked(itemID: number) {
-    this.router.navigateByUrl('/delete/' + itemID);
+    this.router.navigateByUrl('product/delete/' + itemID);
   }
 }

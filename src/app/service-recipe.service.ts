@@ -6,38 +6,29 @@ import { IProduct } from './IProduct';
 @Injectable({
   providedIn: 'root',
 })
-export class ServiceTodoService {
+export class RecipeService {
   httpClient = inject(HttpClient);
   constructor() {}
 
   getAllRecipes() {
-    return this.httpClient.get<IRecipe[]>(
-      'http://localhost:5169/api/ToDo/GetAll'
-    );
+    return this.httpClient.get<IRecipe[]>('https://localhost:7147/api/Recipes');
   }
 
   getRecipeByID(id: number) {
     return this.httpClient.get<IRecipe>(
-      'http://localhost:5169/api/ToDo/GetByID/' + id
+      'https://localhost:7147/api/Recipes/' + id
     );
   }
   editRecipe(item: IAddRecipe) {
-    return this.httpClient.put('http://localhost:5169/api/ToDo/Update', item);
+    return this.httpClient.put('https://localhost:7147/api/Recipes', item);
   }
   deleteRecipe(id: number) {
-    return this.httpClient.delete(
-      'http://localhost:5169/api/ToDo/Delete/' + id
-    );
+    return this.httpClient.delete('https://localhost:7147/api/Recipes/' + id);
   }
   createRecipe(item: IAddRecipe) {
     return this.httpClient.post<IAddRecipe>(
-      'http://localhost:5169/api/ToDo/Create',
+      'https://localhost:7147/api/Recipes',
       item
-    );
-  }
-  getAllProducts() {
-    return this.httpClient.get<IProduct[]>(
-      'http://localhost:5169/api/Category/Get'
     );
   }
 }
